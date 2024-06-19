@@ -65,6 +65,8 @@ This repository contains a Flask web application that processes SMILES datasets,
     sys.path.append('/path/to/your/local/scriptSAR')
     ```
 
+4. Add path to the template folder
+
 4. Run the Flask application:
     ```sh
     python app.py
