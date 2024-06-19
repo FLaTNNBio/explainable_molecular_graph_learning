@@ -1,7 +1,7 @@
 # Graph-Deep-Learning-for-Molecular-Structure-Activity-Relationship
 
 
-This repository contains a Flask web application that processes SMILES datasets, allowing users to select various machine learning models and methods for Structure Activity Relationship analysis on the molecules. The application can be run locally or on Google Colab.
+This repository contains a Flask web application that processes SMILES datasets, allowing users to select various machine learning models and methods for Structure Activity Relationship analysis on the molecules. The application can be run locally or on Google Colab (strong suggested).
 
 ## Features
 
@@ -28,6 +28,25 @@ This repository contains a Flask web application that processes SMILES datasets,
 
 ## Installation
 
+### Google Colab Setup
+
+1. Open Google Colab and create a new notebook.
+   
+
+2. Install the required Python packages:
+    ```python
+    !pip install flask werkzeug pandas torch torch-geometric scikit-learn numpy matplotlib networkx rdkit pyngrok
+    ```
+
+3. Obtain your Ngrok authtoken from [Ngrok](https://dashboard.ngrok.com/get-started/your-authtoken) and run:
+    ```python
+    !ngrok authtoken YOUR_NGROK_AUTH_TOKEN
+    ```
+
+6. Execute the Colab cell.
+
+7. The output will contain an Ngrok public URL. Open the URL in your web browser to access the application.
+
 ### Local Setup
 
 1. Clone the repository:
@@ -53,24 +72,6 @@ This repository contains a Flask web application that processes SMILES datasets,
 
 5. Open your web browser and go to `http://127.0.0.1:5000`.
 
-### Google Colab Setup
-
-1. Open Google Colab and create a new notebook.
-   
-
-2. Install the required Python packages:
-    ```python
-    !pip install flask werkzeug pandas torch torch-geometric scikit-learn numpy matplotlib networkx rdkit pyngrok
-    ```
-
-3. Obtain your Ngrok authtoken from [Ngrok](https://dashboard.ngrok.com/get-started/your-authtoken) and run:
-    ```python
-    !ngrok authtoken YOUR_NGROK_AUTH_TOKEN
-    ```
-
-6. Execute the Colab cell.
-
-7. The output will contain an Ngrok public URL. Open the URL in your web browser to access the application.
 
 ## Usage
 
