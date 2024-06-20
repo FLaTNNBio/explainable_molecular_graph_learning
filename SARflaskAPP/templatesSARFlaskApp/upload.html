@@ -150,7 +150,7 @@
                 <div id="visualizeMessage" class="mt-3"></div>
                 <div id="visualizeContainer" class="mt-3 visualization-container">
                     <img id="molImage" src="" alt="Molecular graph will be displayed here" style="display:none;">
-                    <div class="colorbar-container">
+                    <div id="colorbarContainer" class="colorbar-container" style="display:none;">
                         <div class="colorbar"></div>
                         <div>Node Importance</div>
                     </div>
@@ -205,6 +205,7 @@
                         $('#trainingBanner').hide(); // Hide the training banner
                         $('#processMessage').html('<div class="alert alert-success">' + response.message + '</div>');
                         $('#metricsMessage').html('<div class="alert alert-info">Max AUC: ' + response.max_auc + '<br>Mean AUC: ' + response.mean_auc + '<br>Standard Deviation AUC: ' + response.std_auc + '</div>');
+                        $('#terminalMessage').html('<div class="alert alert-warning">Check the terminal for detailed model performance.</div>');
                     },
                     error: function (response) {
                         $('#trainingBanner').hide(); // Hide the training banner
@@ -223,6 +224,7 @@
                     data: formData,
                     success: function (response) {
                         $('#molImage').attr('src', 'data:image/png;base64,' + response.image).show();
+                        $('#colorbarContainer').show(); // Show the colorbar
                         $('#targetLabel').html('Target Value: ' + response.target);
                     },
                     error: function (response) {
