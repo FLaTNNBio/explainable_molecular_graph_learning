@@ -31,6 +31,14 @@ from torch.nn import Linear
 from torch_geometric.nn import GATConv, global_max_pool
 from torch.nn import Linear
 from torch_geometric.nn import GINConv, global_max_pool
+import copy
+import io
+import matplotlib.colors as mcolors
+import matplotlib.pyplot as plt
+from PIL import Image
+from rdkit.Chem import Draw
+from rdkit import Chem
+from IPython.display import display, Image as IPImage
 
 class GCN(torch.nn.Module):
     def __init__(self, input_dim, hidden_channels):
@@ -831,55 +839,89 @@ def extract_metrics(all_best_models):
 
 """graph plot with node importance"""
 
-def plot_graph_feature_importance(data,num_classes,best_model):
-  tp = Chem.GetPeriodicTable()
-  cp_data = copy.deepcopy(data)
-  best_model.eval()
-  elements = {}
-  for i in range(data.num_nodes):
-    first_element_int = int(data.x[i][0].item())
-    elements[i] = tp.GetElementSymbol(first_element_int)
 
-  one_hot_encoded = [F.one_hot(cp_data.x[:, j].long(), num_classes[j]) for j in range(cp_data.x.shape[1])]
-  one_hot_encoded_tensor = torch.cat(one_hot_encoded, dim=-1)
-  cp_data.x = one_hot_encoded_tensor
+def plot_graph_feature_importance(data, num_classes, best_model):
+    tp = Chem.GetPeriodicTable()
+    cp_data = copy.deepcopy(data)
+    best_model.eval()
+    elements = {}
+    for i in range(data.num_nodes):
+        first_element_int = int(data.x[i][0].item())
+        elements[i] = tp.GetElementSymbol(first_element_int)
 
-  # Forward pass to get the model output
-  output = best_model(cp_data.x.float(), cp_data.edge_index, cp_data.batch)
+    one_hot_encoded = [F.one_hot(cp_data.x[:, j].long(), num_classes[j]) for j in range(cp_data.x.shape[1])]
+    one_hot_encoded_tensor = torch.cat(one_hot_encoded, dim=-1)
+    cp_data.x = one_hot_encoded_tensor
 
-  # Compute node importance scores
-  node_importance = best_model.gradients.norm(dim=1)
+    # Forward pass to get the model output
+    output = best_model(cp_data.x.float(), cp_data.edge_index, cp_data.batch)
 
-  # Convert PyTorch tensor to numpy array for visualization
-  node_importance_np = node_importance.detach().numpy()
+    # Compute node importance scores
+    node_importance = best_model.gradients.norm(dim=1)
 
-  # Create a NetworkX graph from edge_index
-  G = nx.Graph()
-  G.add_edges_from(cp_data.edge_index.T.numpy())
+    # Convert PyTorch tensor to numpy array for visualization
+    node_importance_np = node_importance.detach().numpy()
 
-  # Create a mapping from node indices to their importance scores
-  node_importance_dict = {i: importance for i, importance in enumerate(node_importance_np)}
 
-  # Define colors based on node importance (red scale)
-  node_colors = [node_importance_dict[i] for i in range(len(G.nodes))]
-  cmap = matplotlib.colormaps['Reds']
+    # Normalize importance scores for coloring
+    max_importance = max(node_importance_np) if len(node_importance_np) > 0 else 1
+    min_importance = min(node_importance_np) if len(node_importance_np) > 0 else 0
+    normalized_importance = (node_importance_np - min_importance) / (max_importance - min_importance + 1e-6)  # Add small epsilon to avoid division by zero
 
-  # Determine node size based on importance (larger for higher importance)
-  max_importance = max(node_importance_np)
-  node_sizes = [2000 * (importance / max_importance) for importance in node_importance_np]
 
-  # Draw the graph with node labels and adjusted node sizes
-  plt.figure(figsize=(10, 7))
-  pos = nx.spring_layout(G, seed=42)  # Positions for all nodes
-  nodes = nx.draw_networkx_nodes(G, pos, node_color=node_colors, cmap=cmap, node_size=node_sizes)
-  edges = nx.draw_networkx_edges(G, pos, edgelist=G.edges, alpha=0.5)
-  node_labels = nx.draw_networkx_labels(G, pos, labels=elements, font_size=10, font_color='white')
-  for _, text in node_labels.items():
-      text.set_bbox(dict(facecolor='none', edgecolor='none'))  # No box around labels
-  plt.colorbar(nodes, label='Node Importance', orientation='vertical')
-  plt.title('Graph with Node Importance')
-  plt.axis('off')
-  plt.show()
+    # Create a NetworkX graph from edge_index
+    G = nx.Graph()
+    G.add_edges_from(cp_data.edge_index.T.numpy())
+
+    # Create a mapping from node indices to their importance scores
+    node_importance_dict = {i: importance for i, importance in enumerate(normalized_importance)}
+
+    return elements, node_importance_dict
+
+def visualize_molecular_graph(smiles, elements, node_importance_dict):
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        raise ValueError("Invalid SMILES string")
+
+    # Create a list of atom importance scores
+    atom_importance = []
+    for atom in mol.GetAtoms():
+        idx = atom.GetIdx()
+        atom_importance.append(node_importance_dict[idx] if idx in node_importance_dict else 0)
+
+    # Normalize importance scores for coloring
+    max_importance = max(atom_importance) if atom_importance else 1
+    min_importance = min(atom_importance) if atom_importance else 0
+    normalized_importance = [(score - min_importance) / (max_importance - min_importance + 1e-6) for score in atom_importance]
+
+    # Define the color map and normalize
+    cmap = plt.get_cmap('Reds')
+    norm = mcolors.Normalize(vmin=0, vmax=1)
+
+    # Create a dictionary of highlight colors for atoms
+    highlight_atom_colors = {}
+    for i, atom in enumerate(mol.GetAtoms()):
+        color = cmap(norm(normalized_importance[i]))
+        highlight_atom_colors[atom.GetIdx()] = (float(color[0]), float(color[1]), float(color[2]))
+
+    # Draw the molecule with highlighted atoms
+    drawer = Draw.MolDraw2DCairo(300, 300)
+    opts = drawer.drawOptions()
+    for i, atom in enumerate(mol.GetAtoms()):
+        opts.atomLabels[atom.GetIdx()] = elements[atom.GetIdx()]
+
+    drawer.DrawMolecule(mol, highlightAtoms=[atom.GetIdx() for atom in mol.GetAtoms()], highlightAtomColors=highlight_atom_colors)
+    drawer.FinishDrawing()
+
+    # Convert to PIL image
+    img_data = drawer.GetDrawingText()
+    img = Image.open(io.BytesIO(img_data))
+
+    # Display image in Colab
+    display(IPImage(img_data))
+
+    return img
+
 
 def load_pickle_file(pt_file_path):
   with open(pt_file_path, 'rb') as f:
