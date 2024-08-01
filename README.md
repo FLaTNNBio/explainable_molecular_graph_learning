@@ -1,4 +1,4 @@
-# Graph-Deep-Learning-for-Molecular-Structure-Activity-Relationship
+# Explainable_molecular_graph_learning
 
 
 This repository contains a Flask web application that processes SMILES datasets, allowing users to select various machine learning models and methods for Structure Activity Relationship analysis on the molecules. The application can be run locally or on Google Colab (strong suggested).
@@ -30,20 +30,17 @@ This repository contains a Flask web application that processes SMILES datasets,
 
 ### Google Colab Setup
 
-1. Open Google Colab and create a new notebook.
-   
+1. Open Google Colab and create and import the SARflaskAPP folder.
 
-2. Install the required Python packages:
-    ```python
-    !pip install flask werkzeug pandas torch torch-geometric scikit-learn numpy matplotlib networkx rdkit pyngrok
-    ```
+2. Open SARFlaskAPP.ipynb
+
 
 3. Obtain your Ngrok authtoken from [Ngrok](https://dashboard.ngrok.com/get-started/your-authtoken) and run:
     ```python
     !ngrok authtoken YOUR_NGROK_AUTH_TOKEN
     ```
 
-6. Execute the Colab cell.
+4. Execute the Colab cells!
 
 7. The output will contain an Ngrok public URL. Open the URL in your web browser to access the application.
 
