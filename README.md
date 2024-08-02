@@ -36,6 +36,8 @@ The platform is easy and ready to use, after the dependencies are satisfied, the
 
 The functionalities are:
 - Upload a SMILES dataset for processing.
+  ![Alt text](platform_images/load_SMILES.png)
+
   
 - Select between different machine learning models: GCN, GIN, and GAT.
 - Choose between different methods: Balanced Scatterfold, No Balanced Scatterfold, K-Fold Balanced, and K-Fold No Balanced.
