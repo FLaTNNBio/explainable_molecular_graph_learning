@@ -16,15 +16,8 @@ Specifically, the repository is organized in two sections:
 In the experiment folder, is possible to find the notebook file **Experiment Notebook**, the initial cells in this notebook are designed to install common dependencies and execute shared functions necessary for conducting experiments on various datasets using the **Node2Vec**, **SDNE**, and **HOPE** techniques.
 Each technique has its own set of cells dedicated to creating the embedding dataset using the chosen method. These cells also handle the training and testing of a fully connected network to evaluate performance.
 
-
-- Upload a SMILES dataset for processing.
-- Select between different machine learning models: GCN, GIN, and GAT.
-- Choose between different methods: Balanced Scatterfold, No Balanced Scatterfold, K-Fold Balanced, and K-Fold No Balanced.
-- Visualize the importance of features in the dataset through graph plotting.
-- Track the progress of the model training.
-
-## Requirements
-
+## Platform
+To use the dedicated platform, the following requirements must be satisfied:
 - Python 3.x
 - Flask
 - Werkzeug
@@ -39,6 +32,16 @@ Each technique has its own set of cells dedicated to creating the embedding data
 - Pyngrok (for Colab)
 
 ## Installation
+The platform is easy and ready to use, after the dependencies are satisfied, the **PlatformAPP.ipynb** is ready to use.
+
+The functionalities are:
+- Upload a SMILES dataset for processing.
+  
+- Select between different machine learning models: GCN, GIN, and GAT.
+- Choose between different methods: Balanced Scatterfold, No Balanced Scatterfold, K-Fold Balanced, and K-Fold No Balanced.
+- Visualize the importance of features in the dataset through graph plotting.
+- Track the progress of the model training.
+
 
 ### Google Colab Setup
 
