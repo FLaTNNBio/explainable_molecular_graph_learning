@@ -45,13 +45,15 @@ For a correct usage, the dataset has to satisfied the following requirements: a 
  The user can:
 - Select between different machine learning models: **GCN**, **GIN**, and **GAT**.
 - Choose between different methods: *Balanced Scatterfold*, *No Balanced Scatterfold*, *K-Fold Balanced*, and *K-Fold No Balanced*.
-  <img src="platform_images/train_panel.png" alt="System Architecture" width="700"/>
+  
+<img src="platform_images/train_panel.png" alt="System Architecture" width="700"/>
   
   Once the model and training methodology are selected, the platform displays the performance metrics for both the training and test phases:
-   <img src="platform_images/after_training.png" alt="System Architecture" width="700"/>
+  
+ <img src="platform_images/after_training.png" alt="System Architecture" width="700"/>
 
    
-  - Visualize the Molecule Importance from a *SMILES String*
+- Visualize the Molecule Importance from a *SMILES String*
     After the training of the model, is possible to visualize the importance of each atom in a molecule giving in input a SMILES string of the input dataset into the dedicated form.
     <img src="platform_images/visualization_panel.png" alt="System Architecture" width="700"/>
 
