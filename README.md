@@ -13,7 +13,7 @@ Specifically, the repository is organized in two sections:
  Experiments conducted to evaluate various GNNs and graph embedding methods for molecular classification tasks by leveraging well-known benchmarking datasets in **SMILES** format, i.e., *HIV*, *BBBP*, *BACE*, *CLINTOX*. Extensively used in the literature to benchmark models for molecular property prediction and drug discovery tasks. We systematically tested and compared various GNN architectures and traditional graph embedding techniques. For each dataset, we evaluated their performance to identify strengths and limitations in predicting molecular properties. 
  We trained several different GNNs to assess their performance on the aforementioned datasets: *Graph Convolutional Network* (**GCN**), *Graph Isomorphism Network* (**GIN**), and *Graph Attention Network* (**GAT**). As for the graph embedding methods, also in this case we provide details about the models that achieved the best performance, i.e, a *Fully Connected Neural Network* using three well-known graph embedding techniques as input: **Node2Vec**, **SDNE**, and **HOPE**.
 
- 
+In the experiment folder, is possible to find the notebook file **Experiment Notebook** The initial cells in this notebook are designed to install common dependencies and execute shared functions necessary for conducting experiments on various datasets using the **Node2Vec**, **SDNE**, and **HOPE** techniques.
 
 
 - Upload a SMILES dataset for processing.
