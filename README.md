@@ -43,6 +43,7 @@ For a correct usage, the dataset has to satisfied the following requirements: a 
   
 - Select between different machine learning models: GCN, GIN, and GAT.
 - Choose between different methods: Balanced Scatterfold, No Balanced Scatterfold, K-Fold Balanced, and K-Fold No Balanced.
+  <img src="train_panel/load_SMILES.png" alt="System Architecture" width="700"/>
 - Visualize the importance of features in the dataset through graph plotting.
 - Track the progress of the model training.
 
