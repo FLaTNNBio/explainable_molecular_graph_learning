@@ -46,14 +46,14 @@ For a correct usage, the dataset has to satisfied the following requirements: a 
 - Select between different machine learning models: **GCN**, **GIN**, and **GAT**.
 - Choose between different methods: *Balanced Scatterfold*, *No Balanced Scatterfold*, *K-Fold Balanced*, and *K-Fold No Balanced*.
   <img src="platform_images/train_panel.png" alt="System Architecture" width="700"/>
-  One choosen the model and the methodology to train the model, the performance of the train and test of the model are displayed inside the platform:
-   <img src="platform_images/after_train.png" alt="System Architecture" width="700"/>
+  Once the model and training methodology are selected, the platform displays the performance metrics for both the training and test phases:
+   <img src="platform_images/after_training.png" alt="System Architecture" width="700"/>
+
    
-
-
-- Track the progress of the model training.
-- Visualize the importance of features in the dataset through graph plotting.
-
+  - Visualize the Molecule Importance from a *SMILES String*
+    After the training of the model, is possible to visualize the importance of each atom in a molecule giving in input a SMILES string of the input dataset into the dedicated form.
+    <img src="platform_images/visualization_panel.png" alt="System Architecture" width="700"/>
+    
 
 
 ### Google Colab Setup
