@@ -36,7 +36,7 @@ The platform is easy and ready to use, after the dependencies are satisfied, the
 
 The functionalities are:
 - Upload a SMILES dataset for processing.
-  <img src="platform_images/load_SMILES.png" alt="System Architecture" width="500"/>
+  <img src="platform_images/load_SMILES.png" alt="System Architecture" width="700"/>
 
   
 - Select between different machine learning models: GCN, GIN, and GAT.
