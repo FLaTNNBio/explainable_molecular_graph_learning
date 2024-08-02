@@ -70,16 +70,26 @@ For a correct usage, the dataset has to satisfied the following requirements: a 
 
 3. Open PlatformAPP.ipynb
 
+4.Run the requirements cell 
+   ```python
+      !pip install Flask
+      !pip install pyngrok
+      !pip install rdkit
+      !pip install torch_geometric
+      !pip install ogb
+      !pip install datasets
+   ```
 
-4. Obtain your Ngrok authtoken from [Ngrok](https://dashboard.ngrok.com/get-started/your-authtoken) and run:
+
+6. Obtain your Ngrok authtoken from [Ngrok](https://dashboard.ngrok.com/get-started/your-authtoken) and run:
     ```python
     !ngrok authtoken YOUR_NGROK_AUTH_TOKEN
     ```
    NOTE: The ngrok authtoken is mandatory for Google Colab run!
 
-5. Execute the MAIN cell!
+7. Execute the MAIN cell!
 
-7. The output will contain an Ngrok public URL. Open the URL in your web browser to access the application.
+8. The output will contain an Ngrok public URL. Open the URL in your web browser to access the application.
 
 
 ### Jupyter Local Setup
