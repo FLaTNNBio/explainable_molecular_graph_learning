@@ -1,7 +1,7 @@
 # Navigating the *explainable* Molecular Graph:
 ## Best Practices for Representation Learning in Bioinformatics
 
-
+<div style="text-align: justify;">
 The goal of this project is to provide preliminary guidelines on using *Graph Representation Learning* techniques in *Molecular Property Prediction*.
 Specifically, the repository is organized in two sections:
  
@@ -107,3 +107,4 @@ Feel free to fork this repository and make changes. Pull requests are welcome!
 ## License
 
 This project is licensed under the MIT License.
+<\div>
