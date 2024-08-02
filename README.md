@@ -54,10 +54,11 @@ For a correct usage, the dataset has to satisfied the following requirements: a 
 
    
 - Visualize the Molecule Importance from a *SMILES String*
-    After the training of the model, is possible to visualize the importance of each atom in a molecule giving in input a SMILES string of the input dataset into the dedicated form.
-    <img src="platform_images/visualization_panel.png" alt="System Architecture" width="700"/>
+  After the training of the model, is possible to visualize the importance of each atom in a molecule giving in input a SMILES string of the input dataset into the dedicated form.
+  
+  <img src="platform_images/visualization_panel.png" alt="System Architecture" width="700"/>
 
-    The color intensity of the atom highlights indicates their importance in the model's classification process. The stronger the color, the more that part of the molecule influences the classification    
+  The color intensity of the atom highlights indicates their importance in the model's classification process. The stronger the color, the more that part of the molecule influences the classification    
 
 
 ### Google Colab Setup
