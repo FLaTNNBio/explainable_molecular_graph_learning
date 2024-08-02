@@ -37,7 +37,8 @@ The platform is easy and ready to use, after the dependencies are satisfied, the
 The functionalities are:
 - Upload a SMILES dataset for processing.
   <img src="platform_images/load_SMILES.png" alt="System Architecture" width="700"/>
-
+This section gives the possibility to download any SMILES dataset.
+For a correct usage, the dataset has to satisfied the following requirements: a column named *SMILES* and a column named *target* in order to recognize the input data to transform a *SMILES* string in a *Molecule Graph*.
   
 - Select between different machine learning models: GCN, GIN, and GAT.
 - Choose between different methods: Balanced Scatterfold, No Balanced Scatterfold, K-Fold Balanced, and K-Fold No Balanced.
