@@ -1,4 +1,5 @@
-# Explainable_molecular_graph_learning
+# Navigating the explainable Molecular Graph:
+## Best Practices for Representation Learning in Bioinformatics
 
 
 This repository contains a Flask web application that processes SMILES datasets, allowing users to select various machine learning models and methods for Structure Activity Relationship analysis on the molecules. The application can be run locally or on Google Colab (strong suggested).
