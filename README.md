@@ -40,12 +40,20 @@ The functionalities are:
   
 This section gives the possibility to download any SMILES dataset.
 For a correct usage, the dataset has to satisfied the following requirements: a column named *SMILES* and a column named *target* in order to recognize the input data to transform a *SMILES* string in a *Molecule Graph*.
-  
-- Select between different machine learning models: GCN, GIN, and GAT.
-- Choose between different methods: Balanced Scatterfold, No Balanced Scatterfold, K-Fold Balanced, and K-Fold No Balanced.
+
+ This section of the platform gives the possibilty to choose one of the pre-integrated GNN model to classify the processed SMILES Dataset.
+ The user can:
+- Select between different machine learning models: **GCN**, **GIN**, and **GAT**.
+- Choose between different methods: *Balanced Scatterfold*, *No Balanced Scatterfold*, *K-Fold Balanced*, and *K-Fold No Balanced*.
   <img src="platform_images/train_panel.png" alt="System Architecture" width="700"/>
-- Visualize the importance of features in the dataset through graph plotting.
+  One choosen the model and the methodology to train the model, the performance of the train and test of the model are displayed inside the platform:
+   <img src="platform_images/after_train.png" alt="System Architecture" width="700"/>
+   
+
+
 - Track the progress of the model training.
+- Visualize the importance of features in the dataset through graph plotting.
+
 
 
 ### Google Colab Setup
