@@ -34,6 +34,7 @@ To use the dedicated platform, the following requirements must be satisfied:
 ## Installation
 The platform is easy and ready to use, after the dependencies are satisfied, the **PlatformAPP.ipynb** is ready to use.
 
+## The Platform
 The functionalities are:
 - Upload a SMILES dataset for processing.
   <img src="platform_images/load_SMILES.png" alt="System Architecture" width="700"/>
@@ -63,69 +64,42 @@ For a correct usage, the dataset has to satisfied the following requirements: a 
 
 ### Google Colab Setup
 
-1. Open Google Colab and create and import the SARflaskAPP folder.
+1. Open Google Colab and import the Platform folder.
 
-2. Open SARFlaskAPP.ipynb
+2. Dowload the dataset folder (benchmark dataset)
+
+3. Open PlatformAPP.ipynb
 
 
-3. Obtain your Ngrok authtoken from [Ngrok](https://dashboard.ngrok.com/get-started/your-authtoken) and run:
+4. Obtain your Ngrok authtoken from [Ngrok](https://dashboard.ngrok.com/get-started/your-authtoken) and run:
     ```python
     !ngrok authtoken YOUR_NGROK_AUTH_TOKEN
     ```
+   NOTE: The ngrok authtoken is mandatory for Google Colab run!
 
-4. Execute the Colab cells!
+5. Execute the MAIN cell!
 
 7. The output will contain an Ngrok public URL. Open the URL in your web browser to access the application.
 
-### Local Setup
+
+### Jupyter Local Setup
+
+The local setup is very similar to Colab Setup, let's have a look!
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/smiles-dataset-processor.git
-    cd smiles-dataset-processor
+    git clone https://github.com/FLaTNNBio/explainable_molecular_graph_learning.git
+    cd explainable_molecular_graph_learning
     ```
 
 2. Install the required Python packages:
     ```sh
     pip install flask werkzeug pandas torch torch-geometric scikit-learn numpy matplotlib networkx rdkit pyngrok
     ```
-
-3. Add the path to your local scripts in the `app.py` file:
-    ```python
-    sys.path.append('/path/to/your/local/scriptSAR')
-    ```
-
-4. Add path to the template folder
-
-4. Run the Flask application:
-    ```sh
-    python app.py
-    ```
+3. Execute the MAIN cell
 
 5. Open your web browser and go to `http://127.0.0.1:5000`.
 
-
-## Usage
-
-1. **Upload a SMILES Dataset**: Select and upload your SMILES dataset file.
-
-2. **Select Processing Options**:
-   - Choose a model (GCN, GIN, GAT).
-   - Choose a method (Balanced Scatterfold, No Balanced Scatterfold, K-Fold Balanced, K-Fold No Balanced).
-   - If K-Fold is selected, specify the number of iterations and k-fold value.
-
-3. **Process the Data**: Click the "Process" button to start training. Check the terminal for performance details.
-
-4. **Plot the Graph**: After processing, specify the data index and click "Plot" to visualize the feature importance.
-
-## Notes
-
-- Ensure that the paths to the script and template folders are correctly set based on your environment (local or Colab).
-- When running on Colab, you need to provide your Ngrok authtoken to create a public URL for the Flask app.
-
-## Contributing
-
-Feel free to fork this repository and make changes. Pull requests are welcome!
 
 ## License
 
