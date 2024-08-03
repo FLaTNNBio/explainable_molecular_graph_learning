@@ -5,8 +5,8 @@
 The goal of this project is to provide preliminary guidelines on using *Graph Representation Learning* techniques in *Molecular Property Prediction*.
 Specifically, the repository is organized in two sections:
  
-1. **Experiments:** files and source code produced during experiments carried out to compare *Graph Embedding Methods* and *GNNs* on established benchmarking datasets in **SMILES** format (*HIV*, *BBBP*, *BACE*, *CLINTOX*).
-2. **Platform:** source code of a platform developed for molecular property prediction experiments, allowing users to upload SMILES format datasets and test various embedded GNN models; the platform incorporates the *gradient attribution map* technique as attention mechanisms, which adapts gradients from GNNs to identify critical atoms influencing classification outcomes; by highlighting these key components, the platform enhances interpretability, providing detailed insights into molecular structures and properties.
+1. **Experiments:** files and source code produced during experiments carried out to compare *Graph Embedding Methods* and *GNNs* on established benchmarking datasets in **SMILES** format (*HIV*, *BBBP*, *BACE*, *CLINTOX*). All the dataset for test and explore the methodology are into the folder: *Experiments/exp_datasets/*.
+3. **Platform:** source code of a platform developed for molecular property prediction experiments, allowing users to upload SMILES format datasets and test various embedded GNN models; the platform incorporates the *gradient attribution map* technique as attention mechanisms, which adapts gradients from GNNs to identify critical atoms influencing classification outcomes; by highlighting these key components, the platform enhances interpretability, providing detailed insights into molecular structures and properties. All the dataset are retrivable in the folder *Platform/datasets/*
 
 
 ## Experiments
