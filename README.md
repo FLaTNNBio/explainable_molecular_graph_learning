@@ -5,16 +5,16 @@
 The goal of this project is to provide preliminary guidelines on using *Graph Representation Learning* techniques in *Molecular Property Prediction*.
 Specifically, the repository is organized in two sections:
  
-1. **Experiments:** files and source code produced during experiments carried out to compare *Graph Embedding Methods* and *GNNs* on established benchmarking datasets in **SMILES** format (*HIV*, *BBBP*, *BACE*, *CLINTOX*). All the dataset for test and explore the methodology are into the folder: *Experiments/exp_datasets/*.
-3. **Platform:** source code of a platform developed for molecular property prediction experiments, allowing users to upload SMILES format datasets and test various embedded GNN models; the platform incorporates the *gradient attribution map* technique as attention mechanisms, which adapts gradients from GNNs to identify critical atoms influencing classification outcomes; by highlighting these key components, the platform enhances interpretability, providing detailed insights into molecular structures and properties. All the dataset are retrivable in the folder *Platform/datasets/*
+1. **Experiments:** files and source code produced during experiments carried out to compare *Graph Embedding Methods* and *GNNs* on established benchmarking datasets in **SMILES** format (*HIV*, *BBBP*, *BACE*, *CLINTOX*). 
+3. **Platform:** source code of a platform developed for molecular property prediction experiments, allowing users to upload SMILES format datasets and test various embedded GNN models; the platform incorporates the *gradient attribution map* technique as attention mechanisms, which adapts gradients from GNNs to identify critical atoms influencing classification outcomes; by highlighting these key components, the platform enhances interpretability, providing detailed insights into molecular structures and properties.
 
 
 ## Experiments
  Experiments conducted to evaluate various GNNs and graph embedding methods for molecular classification tasks by leveraging well-known benchmarking datasets in **SMILES** format, i.e., *HIV*, *BBBP*, *BACE*, *CLINTOX*. Extensively used in the literature to benchmark models for molecular property prediction and drug discovery tasks. We systematically tested and compared various GNN architectures and traditional graph embedding techniques. For each dataset, we evaluated their performance to identify strengths and limitations in predicting molecular properties. 
  We trained several different GNNs to assess their performance on the aforementioned datasets: *Graph Convolutional Network* (**GCN**), *Graph Isomorphism Network* (**GIN**), and *Graph Attention Network* (**GAT**). As for the graph embedding methods, also in this case we provide details about the models that achieved the best performance, i.e, a *Fully Connected Neural Network* using three well-known graph embedding techniques as input: **Node2Vec**, **SDNE**, and **HOPE**.
 
-In the experiment folder, is possible to find the notebook file **Experiment Notebook**, the initial cells in this notebook are designed to install common dependencies and execute shared functions necessary for conducting experiments on various datasets using the **Node2Vec**, **SDNE**, and **HOPE** techniques.
-Each technique has its own set of cells dedicated to creating the embedding dataset using the chosen method. These cells also handle the training and testing of a fully connected network to evaluate performance.
+In the experiment folder, is possible to find the notebook file **Experiment Notebook**, the initial cells in this notebook are designed to install common dependencies and execute shared functions necessary for conducting experiments on various datasets using the **Node2Vec**, **SDNE**, and **HOPE** techniques. 
+Each technique has its own set of cells dedicated to creating the embedding dataset using the chosen method. All the dataset for test and explore the methodology are into the folder: *Experiments/exp_datasets/*. These cells also handle the training and testing of a fully connected network to evaluate performance.
 
 ## Platform
 To use the dedicated platform, the following requirements must be satisfied:
@@ -37,6 +37,7 @@ The platform is easy and ready to use, after the dependencies are satisfied, the
 ## The Platform
 The functionalities are:
 - Upload a SMILES dataset for processing.
+  All the dataset are retrivable in the folder *Platform/datasets/*
   <img src="platform_images/load_SMILES.png" alt="System Architecture" width="700"/>
   
 This section gives the possibility to download any SMILES dataset.
